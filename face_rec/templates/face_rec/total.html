@@ -1,0 +1,32 @@
+{% extends 'face_rec/main.html' %}
+{% block content %}
+{% include 'face_rec/status.html' %}
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Sinh viên</th>
+                    <th>Id</th>
+                    <th>Tên</th>
+                    <th>Số điện thoại</th>
+                    <th>E-mail</th>
+                    <th>Mô tả</th>
+                    <th>Xóa</th>
+                </tr>
+                {% for students in student %}
+                    <tr>
+                        <td><a class="btn btn-sm btn-info" href="{% url 'profile' students.student_id %}">Sinh viên</a></td>
+                        <td>{{students.student_id}}</td>
+                        <td>{{students.name}}</td>
+                        <td>{{students.phone}}</td>
+                        <td>{{students.email}}</td>
+                        <td>{{students.description}}</td>
+                        <td><a class="btn btn-sm btn-danger" href="{% url 'delete' students.student_id %}">Xóa</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
